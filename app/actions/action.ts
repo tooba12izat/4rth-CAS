@@ -31,7 +31,7 @@ console.log("form data",name,country,category,sailno)
         };
     }
 
-    revalidatePath('/');
+    revalidatePath('/players');
     // redirect('/users');
 
 }
