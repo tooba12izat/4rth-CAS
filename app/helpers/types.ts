@@ -30,9 +30,11 @@ export interface IUser {
 }
 export interface UserListType {
     name: string;
-    email: string;
+    category: string;
+    country:string;
+    sailno:string;
     _id: string;
-    password:string;
+
 
     // Add other fields as needed
 }
