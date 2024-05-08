@@ -20,22 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div>
-          <ul className="flex justify-between m-10 item-center">
-            <div className="w-full flex gap-10">
-            
-              <Link href="/players">
-                <li>Registered Players List</li>
-              </Link>
-            
-
-              {/*<Link href="/register">*/}
-              {/*    <li>Register</li>*/}
-              {/*</Link>*/}
-
-            </div>
-          </ul>
-        </div>
+       
         {children}</body>
     </html>
   );

@@ -7,10 +7,6 @@ const getPlayers = async () => {
     try {
         await connectDb();
        const user = await User.find({});
-        // if (user.length === 0) {
-        //     // If data is not found, throw an error
-        //     throw new Error('No users found for the given query and page.');
-        // }
         return user;
     } catch (err) {
         throw new Error('Failed to fetch data.');
@@ -20,51 +16,45 @@ const getPlayers = async () => {
 const Table = async () => {
     const players = await getPlayers()
     return (
-        <>
-            <table className="hidden min-w-full text-gray-900 md:table">
-                <thead className="rounded-lg text-left text-sm font-normal">
-                <tr>
-                    <th scope="col" className="px-3 py-5 font-medium text-lg">
-                        ID
-                    </th>
-                    <th scope="col" className="px-4 py-5 font-medium text-lg ">
-                        Name
-                    </th>
-                    <th scope="col" className="px-3 py-5 font-medium text-lg">
-                        Email
-                    </th>
-                </tr>
+        <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                    <tr>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            NAME
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            SAIL NO
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            CLASS
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            COUNTRY
+                        </th>
+                    </tr>
                 </thead>
-                <tbody className="bg-white">
-                {players.map((user: UserListType) => {
-                    const idAsString = user._id.toString();
-                    return (
-                        <tr key={user._id}
-                            className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
-                            <td className="whitespace-nowrap py-3 px-3 ">
-                                <p>{user._id}</p>
+                <tbody className="bg-white divide-y divide-gray-200">
+                    {players.map((user: UserListType) => (
+                        <tr key={user._id} className="bg-white">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                {user.name}
                             </td>
-                            <td className="whitespace-nowrap py-3 px-3">
-                                <p>{user.name}</p>
-                            </td>
-                            <td className="whitespace-nowrap py-3 px-3">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                 {user.sailno}
                             </td>
-                            <td className="whitespace-nowrap py-3 px-3">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                 {user.category}
                             </td>
-                            {/* <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <div className="flex justify-end gap-3">
-                                    <DeleteFriendButton friendId={idAsString} userId={id} />
-                                </div>
-                            </td> */}
-
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                {user.country}
+                            </td>
                         </tr>
-                    )
-                })}
+                    ))}
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
+
 export default Table;

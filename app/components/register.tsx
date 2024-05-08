@@ -9,7 +9,7 @@ const Register = () => {
     return (
         <>
 
-            <div className="flex min-h-screen flex-col items-center justify-between p-24">
+            <div className="flex min-h-screen flex-col items-center justify-between p-14">
                 <div className="bg-gray-100 p-8 rounded shadow-md w-96">
                     <h1 className="heading">REGISTER</h1>
                     <form action={createAction} >
